@@ -21,3 +21,9 @@ Slack通知を行うArtisanコマンド。
 ```bash
 php artisan vendor:publish
 ```
+
+## Usage
+
+```bash
+php artisan slack メッセージ [--level=good|warning|danger]
+```
