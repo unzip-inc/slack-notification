@@ -13,7 +13,7 @@ class SlackNotificationServiceProvider extends SlackServiceProviderLaravel5
 {
     public function boot()
     {
-        $configPath = __DIR__ . '/config/config.php';
+        $configPath = __DIR__ . '/../config/config.php';
         $targetPath = $this->app->make('path.config') . '/slack.php';
 
         $this->publishes([$configPath => $targetPath], 'config');
