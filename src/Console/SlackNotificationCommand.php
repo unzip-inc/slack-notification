@@ -35,6 +35,9 @@ class SlackNotificationCommand extends Command
         $message = $this->argument('message');
         $level = $this->option('level');
 
+        // 設定上書き前のバックアップ
+        $linkNamesConfigValue = $this->slack->getLinkNames();
+
         $this->slack->setLinkNames(true);
         $slackMessage = $this->slack->createMessage();
         $slackMessage->enableMarkdown();
@@ -52,6 +55,9 @@ class SlackNotificationCommand extends Command
             // テキストメッセージのみ送信
             $slackMessage->send($message);
         }
+
+        // 上書き設定を元に戻す
+        $this->slack->setLinkNames($linkNamesConfigValue);
     }
 
     /**
